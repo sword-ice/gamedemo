@@ -1,4 +1,4 @@
-package task;
+package com.xia.demo.game.task;
 
 import lombok.Data;
 import org.slf4j.Logger;
@@ -12,6 +12,8 @@ public class MsgTask extends AbstractTask{
     private static Logger logger = LoggerFactory.getLogger(MsgTask.class);
 
     private long uid;
+
+    private Object handler;
 
     private Method method;
 

@@ -1,4 +1,4 @@
-package db;
+package com.xia.demo.game.db;
 
 
 import org.slf4j.Logger;

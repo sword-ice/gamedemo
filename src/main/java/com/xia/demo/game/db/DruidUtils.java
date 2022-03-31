@@ -1,4 +1,4 @@
-package db;
+package com.xia.demo.game.db;
 
 import com.alibaba.druid.pool.DruidDataSourceFactory;
 

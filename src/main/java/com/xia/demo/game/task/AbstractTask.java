@@ -1,4 +1,4 @@
-package task;
+package com.xia.demo.game.task;
 
 public abstract class AbstractTask implements TaskBase{
 

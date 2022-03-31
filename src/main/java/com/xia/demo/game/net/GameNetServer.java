@@ -1,4 +1,4 @@
-package net;
+package com.xia.demo.game.net;
 
 
 import io.netty.channel.EventLoopGroup;
@@ -13,7 +13,9 @@ public class GameNetServer {
 
     private Logger logger = LoggerFactory.getLogger(GameNetServer.class);
 
-    public void start()
+    public void start(){
+
+    }
 
 
 
