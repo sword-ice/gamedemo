@@ -1,14 +1,14 @@
 package com.xia.game;
 
-import com.xia.game.common.SpringContext;
-import com.xia.game.message.MessageFactory;
-import com.xia.game.net.NettyServer;
+import com.xia.framework.common.SpringContext;
+import com.xia.framework.message.MessageFactory;
+import com.xia.framework.net.NettyServer;
 import org.springframework.boot.Banner;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication(scanBasePackages = {"com.xia.game"})
+@SpringBootApplication(scanBasePackages = {"com.xia.framework"})
 public class DemoApplication  implements CommandLineRunner {
 
 	public static void main(String[] args) {
@@ -21,7 +21,7 @@ public class DemoApplication  implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) {
-		MessageFactory.getInstance().initMessagePool("com.xia.game.message");
+		MessageFactory.getInstance().initMessagePool("com.xia.game.control");
 		SpringContext.getBean(NettyServer.class).start();
 	}
 }
