@@ -64,7 +64,7 @@ public class NettyServer {
             pipeline.addLast(new NettyProtocolEncoder());
             // 客户端300秒没收发包，便会触发UserEventTriggered事件到IdleEventHandler
             pipeline.addLast(new IdleStateHandler(0, 0, 300));
-            pipeline.addLast(new IoEventHandler(new MessageDispatcher()));
+            pipeline.addLast(new IoEventHandler());
         }
     }
 

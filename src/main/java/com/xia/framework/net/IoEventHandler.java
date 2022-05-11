@@ -14,18 +14,15 @@ public class IoEventHandler extends ChannelInboundHandlerAdapter {
 
 	private final static Logger logger = LoggerFactory.getLogger(IoEventHandler.class);
 
-	private MessageDispatcher messageDispatcher;
-
-	public IoEventHandler(MessageDispatcher messageDispatcher){
-		this.messageDispatcher = messageDispatcher;
-	}
 
 	@Override
-	public void channelActive(ChannelHandlerContext ctx) throws Exception {
-		if (!ChannelUtils.addChannelSession(ctx.channel(), new NettySession(ctx.channel()))) {
+	public void channelActive(ChannelHandlerContext ctx) {
+		IdSession session = new NettySession(ctx.channel());
+		if (!ChannelUtils.addChannelSession(ctx.channel(), session)) {
 			ctx.channel().close();
 			logger.error("Duplicate session,IP=[{}]", ChannelUtils.getIp(ctx.channel()));
 		}
+
 	}
 
 	@Override
@@ -36,7 +33,7 @@ public class IoEventHandler extends ChannelInboundHandlerAdapter {
 		final Channel channel = context.channel();
 		IdSession session = ChannelUtils.getSessionBy(channel);
 
-		SpringContext.getMessageDispatcher().dispatch(session, packet);
+		MessageDispatcher.getSingleton().dispatch(session, packet);
 	}
 
 	@Override

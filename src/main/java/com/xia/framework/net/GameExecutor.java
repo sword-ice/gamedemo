@@ -4,6 +4,7 @@ import com.xia.framework.task.AbstractTask;
 import com.xia.framework.thread.NameThreadFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.util.concurrent.ExecutorService;
@@ -11,6 +12,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+@Component
 public class GameExecutor {
 
     private Logger logger = LoggerFactory.getLogger(GameExecutor.class);

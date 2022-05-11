@@ -51,11 +51,11 @@ public class SpringContext implements ApplicationContextAware {
     }
 
 
-    @Autowired
-    private MessageDispatcher dispatch;
-    public static MessageDispatcher getMessageDispatcher() {
-        return instance.dispatch;
-    }
+//    @Autowired
+//    private MessageDispatcher dispatch;
+//    public static MessageDispatcher getMessageDispatcher() {
+//        return instance.dispatch;
+//    }
 
     @Resource
     private SessionManager sessionManager;

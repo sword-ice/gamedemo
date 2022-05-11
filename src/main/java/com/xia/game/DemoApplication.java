@@ -8,7 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication(scanBasePackages = {"com.xia.framework"})
+@SpringBootApplication(scanBasePackages = {"com.xia.framework","com.xia.game"})
 public class DemoApplication  implements CommandLineRunner {
 
 	public static void main(String[] args) {
@@ -21,7 +21,7 @@ public class DemoApplication  implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) {
-		MessageFactory.getInstance().initMessagePool("com.xia.game.control");
+		MessageFactory.getInstance().initMessagePool("com.xia.game");
 		SpringContext.getBean(NettyServer.class).start();
 	}
 }

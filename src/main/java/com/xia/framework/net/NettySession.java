@@ -50,7 +50,7 @@ public class NettySession implements IdSession{
 
     @Override
     public Object getAttribute(String key) {
-        return this.attrs.get(key);
+        return this.attrs.containsKey(key)?this.attrs.get(key):0;
     }
 
     public boolean isClose() {
