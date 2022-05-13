@@ -3,9 +3,13 @@ package com.xia.client;
 
 import com.xia.framework.message.Message;
 
+import com.xia.framework.message.MessageFactory;
 import com.xia.framework.net.ChannelUtils;
+import com.xia.framework.net.CmdExecutor;
 import com.xia.framework.net.IdSession;
 import com.xia.framework.net.NettySession;
+import com.xia.framework.serializer.SerializerHelper;
+import com.xia.game.login.message.ResLogin;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
@@ -32,12 +36,17 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext context, Object msg) throws Exception {
         Message packet = (Message) msg;
-        System.out.println(packet.getKey());
+        logger.info("日志"+((Message) msg).getKey());
+        if(packet instanceof ResLogin) {
+            ResLogin message = (ResLogin) msg;
+            System.out.println(System.currentTimeMillis()-message.getPlayerInfo().getTs());
+        }
+        System.out.println(msg.toString());
         logger.info("receive pact, content is {}", packet.getClass().getSimpleName());
 
         final Channel channel = context.channel();
         IdSession session = ChannelUtils.getSessionBy(channel);
-
+        ClientMessage.login(context);
 
 
     }

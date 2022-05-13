@@ -43,6 +43,8 @@ public class NettyServer {
         ServerBootstrap b = new ServerBootstrap();
         b.group(bossGroup,workerGroup)
                 .channel(NioServerSocketChannel.class)
+                .childOption(ChannelOption.SO_KEEPALIVE, true)
+                .childOption(ChannelOption.TCP_NODELAY, true)
                 .option(ChannelOption.SO_BACKLOG,1024)
                 .childHandler(new ChildChannelHandler());
         try {
@@ -56,7 +58,7 @@ public class NettyServer {
     }
 
 
-    private class ChildChannelHandler extends ChannelInitializer<SocketChannel> {
+    private static class ChildChannelHandler extends ChannelInitializer<SocketChannel> {
         @Override
         protected void initChannel(SocketChannel arg0) throws Exception {
             ChannelPipeline pipeline = arg0.pipeline();

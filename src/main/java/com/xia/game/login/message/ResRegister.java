@@ -12,11 +12,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @ProtobufClass
-@MessageMeta(module = Modle.LOGIN,cmd = Cmd.reqLogin)
-public class ReqLogin extends Message {
-
-    private long username;
-
-
-    private String password;
+@MessageMeta(module = Modle.REGISTER,cmd = Cmd.resRegister)
+public class ResRegister extends Message {
+    private int status;
 }

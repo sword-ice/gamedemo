@@ -26,7 +26,7 @@ public class IoEventHandler extends ChannelInboundHandlerAdapter {
 	}
 
 	@Override
-	public void channelRead(ChannelHandlerContext context, Object msg) throws Exception {
+	public void channelRead(ChannelHandlerContext context, Object msg) {
 		Message packet = (Message) msg;
 		logger.info("receive pact, content is {}", packet.getClass().getSimpleName());
 
@@ -37,12 +37,12 @@ public class IoEventHandler extends ChannelInboundHandlerAdapter {
 	}
 
 	@Override
-	public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+	public void channelInactive(ChannelHandlerContext ctx) {
 		SpringContext.getSessionManager().unRegisterChannel(ctx.channel());
 	}
 
 	@Override
-	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
 		Channel channel = ctx.channel();
 		if (channel.isActive() || channel.isOpen()) {
 			ctx.close();

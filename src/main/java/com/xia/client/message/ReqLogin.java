@@ -1,6 +1,5 @@
-package com.xia.game.login.message;
+package com.xia.client.message;
 
-import com.baidu.bjf.remoting.protobuf.annotation.Protobuf;
 import com.baidu.bjf.remoting.protobuf.annotation.ProtobufClass;
 import com.xia.framework.message.Message;
 import com.xia.framework.message.annotation.MessageMeta;

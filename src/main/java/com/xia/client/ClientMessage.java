@@ -16,9 +16,12 @@ public class ClientMessage {
     public static void login(ChannelHandlerContext ctx){
         ReqLogin login = new ReqLogin();
         System.out.print("用户名：");
-        login.setUsername(Long.valueOf(sc.nextLine()));
+        long username = Long.parseLong(sc.nextLine());
+        login.setUsername(username);
         System.out.print("密码：");
-        login.setPassword(sc.nextLine());
+        String passward = sc.nextLine();
+        login.setPassword(passward);
+        login.setUsername(System.currentTimeMillis());
         ctx.writeAndFlush(login);
     }
 
