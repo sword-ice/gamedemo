@@ -10,16 +10,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/*
+该类暂不做使用，改用mybatis
+ */
+@Deprecated
 public class DbUtils {
 
-   private static Logger logger = LoggerFactory.getLogger(DruidUtils.class);
+   private static final Logger logger = LoggerFactory.getLogger(DruidUtils.class);
 
 
     public static Map<String,Object> queryRow(String sql, Object... msg){
         Connection conn = null;
         Statement st = null;
         ResultSet rs = null;
-        Map<String,Object> result = new HashMap<String, Object>();
+        Map<String,Object> result = new HashMap<>();
         try {
             conn = DruidUtils.getConnection();
             st = conn.createStatement();
@@ -48,7 +52,7 @@ public class DbUtils {
         Connection conn = null;
         Statement st = null;
         ResultSet rs = null;
-        List<Map<String,Object>> result = new ArrayList<Map<String, Object>>();
+        List<Map<String,Object>> result = new ArrayList<>();
         try {
             conn = DruidUtils.getConnection();
             st = conn.createStatement();
@@ -56,7 +60,7 @@ public class DbUtils {
             ResultSetMetaData rsmd = rs.getMetaData();
             while (rs.next()){
                 int cols = rsmd.getColumnCount();
-                Map<String,Object> map = new HashMap<String, Object>();
+                Map<String,Object> map = new HashMap<>();
                 for(int i = 1;i<= cols;i++){
                     String columnLabel = rsmd.getColumnLabel(i);
                     if(columnLabel == null || columnLabel.length() == 0){

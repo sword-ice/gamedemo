@@ -20,7 +20,7 @@ public class ClientServer {
     public static void main(String[] args) throws Exception{
 
         InternalLoggerFactory.setDefaultFactory(Slf4JLoggerFactory.INSTANCE);
-        String host = "127.0.0.1";
+        String host = "192.168.0.52";
         MessageFactory.getInstance().initMessagePool("com.xia.client");
         connect(host,8898);
     }

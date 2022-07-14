@@ -10,6 +10,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
+/**
+ * @author xia
+ * 该类暂不做使用
+ */
+@Deprecated
 public class DruidUtils {
     //连接池
     static DataSource dataSource;

@@ -21,7 +21,7 @@ public class ClientMessage {
         System.out.print("密码：");
         String passward = sc.nextLine();
         login.setPassword(passward);
-        login.setUsername(System.currentTimeMillis());
+        //login.setUsername(System.currentTimeMillis());
         ctx.writeAndFlush(login);
     }
 

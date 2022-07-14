@@ -5,6 +5,10 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.Properties;
 
+/*
+该类暂不做使用，改用mybatis
+ */
+@Deprecated
 public class JDBCUtils {
 
     //数据库url、用户名和密码

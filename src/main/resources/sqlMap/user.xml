@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xia.game.dao.UserMapper">
+    <select id="findUserById" parameterType="int" resultType="com.xia.game.entity.User">
+        select * from user where uid = #{uid}
+    </select>
+    <select id="findUserAll" resultType="com.xia.game.entity.User">
+        select * from user
+    </select>
+    <select id="findUserByUsername" resultType="com.xia.game.entity.User">
+        select * from user where username = #{username}
+    </select>
+    <insert id="insertUser" parameterType="com.xia.game.entity.User">
+        insert into user(uid,username,password) values(#{uid},#{name},#{age})
+    </insert>
+    <delete id="deleteUserById" parameterType="int">
+        delete from User where uid=#{uid}
+    </delete>
+    <update id="updateUserPassword" parameterType="com.xia.game.entity.User">
+        update User set password=#{password} where uid=#{uid}
+    </update>
+</mapper>

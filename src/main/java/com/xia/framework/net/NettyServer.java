@@ -16,17 +16,19 @@ import javax.annotation.PostConstruct;
 import java.net.InetSocketAddress;
 
 
-
+/**
+ * @author xia
+ */
 @Component
 public class NettyServer {
 
     private int port;
 
-    private EventLoopGroup bossGroup = new NioEventLoopGroup(4);
-    private EventLoopGroup workerGroup = new NioEventLoopGroup();
+    private final EventLoopGroup bossGroup = new NioEventLoopGroup(4);
+    private final EventLoopGroup workerGroup = new NioEventLoopGroup();
 
 
-    private Logger logger = LoggerFactory.getLogger(GameNetServer.class);
+    private final Logger logger = LoggerFactory.getLogger(GameNetServer.class);
 
 
     @Autowired
@@ -60,7 +62,7 @@ public class NettyServer {
 
     private static class ChildChannelHandler extends ChannelInitializer<SocketChannel> {
         @Override
-        protected void initChannel(SocketChannel arg0) throws Exception {
+        protected void initChannel(SocketChannel arg0) {
             ChannelPipeline pipeline = arg0.pipeline();
             pipeline.addLast(new NettyProtocolDecoder());
             pipeline.addLast(new NettyProtocolEncoder());
