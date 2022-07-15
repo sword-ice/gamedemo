@@ -10,7 +10,7 @@ import java.util.Scanner;
 @Controller
 public class ClientMessage {
 
-    private static Scanner sc = new Scanner(System.in);
+    private static final Scanner sc = new Scanner(System.in);
 
     @RequestMapping
     public static void login(ChannelHandlerContext ctx){

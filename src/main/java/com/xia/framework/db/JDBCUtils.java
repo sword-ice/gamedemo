@@ -1,7 +1,8 @@
 package com.xia.framework.db;
 
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.*;
 import java.util.Properties;
 
@@ -22,7 +23,7 @@ public class JDBCUtils {
     static{
         Properties properties = new Properties();
         try {
-            properties.load(new FileInputStream("druid.properties"));
+            properties.load(Files.newInputStream(Paths.get("druid.properties")));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -39,9 +40,7 @@ public class JDBCUtils {
             Class.forName(driver);
             /* 2、获取数据库连接 */
             connection = DriverManager.getConnection(url,username,password);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
         return connection;

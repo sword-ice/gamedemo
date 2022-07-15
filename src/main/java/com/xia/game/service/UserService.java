@@ -18,12 +18,12 @@ public class UserService {
         this.userMapper = userMapper;
     }
 
-    @Cacheable(key = "'user_cache_uid_'+ #uid")
+    @Cacheable(key = "'user_cache_uid_'+ #uid", unless="#result == null")
     public User findUserById(int uid) {
         return userMapper.findUserById(uid);
     }
 
-    @Cacheable(key = "'user_cache_username_'+ #p0")
+    @Cacheable(key = "'user_cache_username_'+ #p0", unless="#result == null")
     public User findUserByUsername(long username){
         return userMapper.findUserByUsername(username);
     }
@@ -32,17 +32,17 @@ public class UserService {
         return userMapper.findUserAll();
     }
 
-    @Cacheable(key = "'user_cache_uid_'+ #user.uid")
+    @Cacheable(key = "'user_cache_uid_'+ #user.uid", unless="#result == null")
     public void insertUser(User user){
         userMapper.insertUser(user);
     }
 
-    @Cacheable(key = "'user_cache_uid_'+ #uid")
+    @Cacheable(key = "'user_cache_uid_'+ #uid", unless="#result == null")
     public void deleteUserById(int uid){
         userMapper.deleteUserById(uid);
     }
 
-    @Cacheable(key = "'user_cache_uid_'+ #user.uid")
+    @Cacheable(key = "'user_cache_uid_'+ #user.uid", unless="#result == null")
     public void updateUserPassword(User user){
         userMapper.updateUserPassword(user);
     }

@@ -12,10 +12,10 @@ import java.util.List;
 @Repository
 @CacheNamespace(implementation = RedisCache.class)
 public interface UserMapper {
-    public User findUserById(int id);
-    public List<User> findUserAll();
-    public void insertUser(User user);
-    public void deleteUserById(int id);
-    public void updateUserPassword(User user);
-    public User findUserByUsername(long username);
+    User findUserById(int id);
+    List<User> findUserAll();
+    void insertUser(User user);
+    void deleteUserById(int id);
+    void updateUserPassword(User user);
+    User findUserByUsername(long username);
 }

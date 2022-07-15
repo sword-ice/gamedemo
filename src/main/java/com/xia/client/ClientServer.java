@@ -41,7 +41,7 @@ public class ClientServer {
                     .handler(new ChannelInitializer<SocketChannel>() {
 
                         @Override
-                        protected void initChannel(SocketChannel ch) throws Exception {
+                        protected void initChannel(SocketChannel ch) {
                             ch.pipeline().addLast(new ClientProtocolDecoder());//解码
                             ch.pipeline().addLast(new ClientProtocolEncoder());
                             ch.pipeline().addLast(new ClientHandler());
